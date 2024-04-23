@@ -13,7 +13,7 @@ class AppDelegate: NSObject, UIApplicationDelegate, LastCrashDelegate  {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         
-        LastCrash.configure("LASTCRASH_API_KEY")
+        LastCrash.configure("8c1ebdd74fd64190b41ddd93e8e3ec48")
         LastCrash.enabledLogging()
         LastCrash.setDelegate(self)
         
