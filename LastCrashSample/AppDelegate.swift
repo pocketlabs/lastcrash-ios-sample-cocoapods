@@ -16,6 +16,7 @@ class AppDelegate: NSObject, UIApplicationDelegate, LastCrashDelegate  {
         LastCrash.configure("8c1ebdd74fd64190b41ddd93e8e3ec48")
         LastCrash.enabledLogging()
         LastCrash.setDelegate(self)
+        LastCrash.applicationInitialized()
         
         return true
     }

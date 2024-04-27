@@ -18,7 +18,21 @@ pod install --repo-update
 
 - Replace `LASTCRASH_API_KEY` with your LastCrash API key.
 
-### **Swift:**
+### Optional Delegate
+
+Setting the delegate is optional.  If you would like to control the logic behind sending crash reports then implement the `LastCrashDelegate` interface and call `setDelegate`.
+
+The `lastCrashDidCrash` method will be called when crash reports are available to send.  This allows you to implement your own logic or ask the user for permission to send crash reports.
+
+`LastCrash.send()` must be called to send the crash reports if the delegate is used.
+
+### Application not responding support
+
+A call to `LastCrash.applicationInitialized()` must be made after your app is initialized in order to track application not responding (ANR) errors.  
+
+The reason this call to `LastCrash.applicationInitialized()` is required is to starting ANR monitoring only after everything in your app is initialized/loaded so false positives can be avoided.
+
+#### **Swift:**
 
 ```swift
 import LastCrash
@@ -30,6 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LastCrashDelegate {
     LastCrash.configure("LASTCRASH_API_KEY")
     LastCrash.enabledLogging()
     LastCrash.setDelegate(self)
+    LastCrash.applicationInitialized()
     ...
   }
 
@@ -41,14 +56,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LastCrashDelegate {
 }
 ```
 
-### **Objective-C:**
+#### **Objective-C:**
 
 AppDelegate.h:
 
 ```objectivec
 #import <LastCrash/LastCrash.h>
 ...
-@interface AppDelegate : RCTAppDelegate <LastCrashDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, LastCrashDelegate>
 ```
 
 AppDelegate.m:
@@ -60,6 +75,7 @@ AppDelegate.m:
   [LastCrash configure:@"LASTCRASH_API_KEY"];
   [LastCrash enabledLogging];
   [LastCrash setDelegate:self];
+  [LastCrash applicationInitialized];
   ...
 }
 
