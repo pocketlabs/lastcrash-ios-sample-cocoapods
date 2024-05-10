@@ -5,5 +5,5 @@ target 'LastCrashSample' do
   use_frameworks!
 
   # Pods for LastCrashSample
-  pod 'LastCrash' , '1.1.15'
+  pod 'LastCrash'
 end
