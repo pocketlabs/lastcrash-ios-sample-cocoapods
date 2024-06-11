@@ -1,5 +1,5 @@
 PODS:
-  - LastCrash (1.1.17)
+  - LastCrash (1.1.18)
 
 DEPENDENCIES:
   - LastCrash
@@ -9,7 +9,7 @@ SPEC REPOS:
     - LastCrash
 
 SPEC CHECKSUMS:
-  LastCrash: 7f6189bcccbfa2096cd2e15383641068dc26a20b
+  LastCrash: b8a37ef085ada962cc70e7c12d329fd23d219c21
 
 PODFILE CHECKSUM: 5a3742e4dc4e45cc0f5c848859b5542beefdab64
 
