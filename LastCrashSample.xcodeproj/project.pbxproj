@@ -106,6 +106,7 @@
 				6A67ECDF2B4D1473001C10F5 /* Frameworks */,
 				6A67ECE02B4D1473001C10F5 /* Resources */,
 				80DEA5FE4A3D6C4A5DD275A7 /* [CP] Embed Pods Frameworks */,
+				6A0707052C9613E300DD1C34 /* LastCrash */,
 			);
 			buildRules = (
 			);
@@ -183,6 +184,28 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		6A0707052C9613E300DD1C34 /* LastCrash */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${PRODUCT_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Info.plist",
+				"$PROJECT_DIR/Pods/LastCrash/LastCrash.xcframework/lastcrash-run",
+			);
+			name = LastCrash;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "$PROJECT_DIR/Pods/LastCrash/LastCrash.xcframework/lastcrash-run 8c1ebdd74fd64190b41ddd93e8e3ec48\n";
 		};
 		80DEA5FE4A3D6C4A5DD275A7 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;

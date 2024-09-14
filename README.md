@@ -102,6 +102,29 @@ AppDelegate.m:
 ...
 ```
 
+## Debugging symbols
+
+LastCrash needs your project's debug symbol (dSYM) files to generate human readable crash reports.  Follow the steps below to automatically upload your app's symbol files on release builds.
+
+1. Open your project's Xcode workspace, then select its project file in the left navigator.
+2. From the TARGETS list, select your main build target.
+3. Click the Build Settings tab, then complete the following steps so that Xcode produces dSYMs for your builds.
+4. Click All, then search for debug information format.
+5. Set Debug Information Format to DWARF with dSYM File for all your build types.
+6. Click the Build Phases tab, then complete the following steps so that Xcode can process your dSYMs and upload the files.
+7. Click add > New Run Script Phase.
+    * _Make sure this new Run Script phase is your project's last build phase._
+8. Expand the Run Script section and replace `LASTCRASH_API_KEY` with your project's API key:
+    * Shell
+        * `/bin/sh`
+    * Script
+        * `$PROJECT_DIR/LastCrash.xcframework/lastcrash-run LASTCRASH_API_KEY`
+    * Input files section
+        * `${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}`
+        * `${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${PRODUCT_NAME}`
+        * `${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Info.plist`
+        * `$PROJECT_DIR/Pods/LastCrash/LastCrash.xcframework/lastcrash-run`
+
 ## Testing
 
 Run app in `Release` mode with debugging turned off. For best results, run on a physical device, rather than a simulator.
