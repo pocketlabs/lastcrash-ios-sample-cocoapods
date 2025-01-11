@@ -14,15 +14,15 @@ struct ContentView: View {
             Image(systemName: "globe")
                 .imageScale(.large)
                 .foregroundStyle(.tint)
-            Text("Hello, world!")
-            Button("Test Crash") {
+            Text("hello_world")
+            Button("test_crash") {
                 let s : String? = nil
                 print(" " + s!)
             }
-            Button("Pause Recording") {
+            Button("pause_recording") {
                 LastCrash.pause()
             }
-            Button("Unpause Recording") {
+            Button("unpause_recording") {
                 LastCrash.unpause()
             }
         }

@@ -1,5 +1,9 @@
 # LastCrash iOS Sample Application (Installation via CocoaPods)
 
+## API Documentation
+
+[LastCrash iOS Latest API Documentation](https://docs.lastcrash.io/ios/api/latest/documentation/lastcrash/lastcrash)
+
 ## SDK Setup Instructions
 
 ### Add LastCrash to your Podfile:
@@ -20,17 +24,21 @@ pod install --repo-update
 
 ### Optional Delegate
 
-Setting the delegate is optional.  If you would like to control the logic behind sending crash reports then implement the `LastCrashDelegate` interface and call `setDelegate`.
+Setting the delegate is optional.  If you would like to control the logic behind sending crash reports then implement the `LastCrashReportSenderDelegate` interface and call `setCrashReportSenderDelegate`.
 
-The `lastCrashDidCrash` method will be called when crash reports are available to send.  This allows you to implement your own logic or ask the user for permission to send crash reports.
+The `lastCrashReportSenderHandleCrash` method will be called when crash reports are available to send.  This allows you to implement your own logic or ask the user for permission to send crash reports.
 
-`LastCrash.send()` must be called to send the crash reports if the delegate is used.
+`LastCrash.sendCrashes()` must be called to send the crash reports if the delegate is used.
 
 ### Freeze support
 
 A call to `LastCrash.applicationInitialized()` must be made after your app is initialized in order to track freeze (application not responding or ANR) errors.  
 
 The reason this call to `LastCrash.applicationInitialized()` is required is to starting Freeze monitoring only after everything in your app is initialized/loaded so false positives can be avoided.
+
+### Masking support
+
+All text that isn't part of the app's localization files will be redacted on device to prevent any user or customer PII from being captured.  Ensure that all user interface elements are utilizing localization strings to get the most value out of the recorded crash videos.
 
 ### Networking support
 
@@ -51,21 +59,21 @@ let myURLSession = URLSession(configuration: configuration)
 ```swift
 import LastCrash
 ...
-class AppDelegate: UIResponder, UIApplicationDelegate, LastCrashDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, LastCrashReportSenderDelegate {
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     ...
     LastCrash.configure("LASTCRASH_API_KEY")
     LastCrash.enabledLogging()
-    LastCrash.setDelegate(self)
+    LastCrash.setCrashReportSenderDelegate(self)
     LastCrash.addNetworkTrackingToDefaultSession()
     LastCrash.applicationInitialized()
     ...
   }
 
-  func lastCrashDidCrash() {
+  func lastCrashReportSenderHandleCrash() {
     // logic to handle crash here
-    LastCrash.send()
+    LastCrash.sendCrashes()
   }
 
 }
@@ -78,7 +86,7 @@ AppDelegate.h:
 ```objectivec
 #import <LastCrash/LastCrash.h>
 ...
-@interface AppDelegate : UIResponder <UIApplicationDelegate, LastCrashDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, LastCrashReportSenderDelegate>
 ```
 
 AppDelegate.m:
@@ -89,15 +97,15 @@ AppDelegate.m:
   ...
   [LastCrash configure:@"LASTCRASH_API_KEY"];
   [LastCrash enabledLogging];
-  [LastCrash setDelegate:self];
+  [LastCrash setCrashReportSenderDelegate:self];
   [LastCrash addNetworkTrackingToDefaultSession];
   [LastCrash applicationInitialized];
   ...
 }
 
-- (void)lastCrashDidCrash {
+- (void)lastCrashReportSenderHandleCrash {
   // logic here to handle crash
-  [LastCrash send];
+  [LastCrash sendCrashes];
 }
 ...
 ```

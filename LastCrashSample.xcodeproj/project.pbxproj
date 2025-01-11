@@ -13,6 +13,7 @@
 		6A67ECE82B4D1473001C10F5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A67ECE72B4D1473001C10F5 /* ContentView.swift */; };
 		6A67ECEA2B4D1473001C10F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A67ECE92B4D1473001C10F5 /* Assets.xcassets */; };
 		6A67ECED2B4D1473001C10F5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A67ECEC2B4D1473001C10F5 /* Preview Assets.xcassets */; };
+		6AC7112F2D332CED00ECF040 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 6AC7112E2D332CED00ECF040 /* Localizable.xcstrings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		6A67ECE72B4D1473001C10F5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		6A67ECE92B4D1473001C10F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6A67ECEC2B4D1473001C10F5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		6AC7112E2D332CED00ECF040 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 				6A67ECE92B4D1473001C10F5 /* Assets.xcassets */,
 				6A67ECEB2B4D1473001C10F5 /* Preview Content */,
 				6A4F654B2B4DDAC600735EE6 /* AppDelegate.swift */,
+				6AC7112E2D332CED00ECF040 /* Localizable.xcstrings */,
 			);
 			path = LastCrashSample;
 			sourceTree = "<group>";
@@ -157,6 +160,7 @@
 			files = (
 				6A67ECED2B4D1473001C10F5 /* Preview Assets.xcassets in Resources */,
 				6A67ECEA2B4D1473001C10F5 /* Assets.xcassets in Resources */,
+				6AC7112F2D332CED00ECF040 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,6 +303,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -355,6 +360,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
