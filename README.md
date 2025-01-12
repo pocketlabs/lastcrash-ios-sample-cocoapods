@@ -40,6 +40,42 @@ The reason this call to `LastCrash.applicationInitialized()` is required is to s
 
 All text that isn't part of the app's localization files will be redacted on device to prevent any user or customer PII from being captured.  Ensure that all user interface elements are utilizing localization strings to get the most value out of the recorded crash videos.
 
+#### View based masking
+
+Views can be explicitly masked by passing a View object reference or by view id.  An important note: it is your responsibility to manage the masked view lifecycle to add and remove masked views as they are shown on the screen.
+
+A best practice is to add masked views in `viewWillAppear` of a `UIViewController`.
+
+```swift
+// Mask view by UIView object reference
+LastCrash.addMaskView(view)
+```
+
+Masked views should be removed in the `viewDidDisappear` of a `UIViewController`.
+
+```swift
+// Remove mask view by UIView object reference
+LastCrash.removeMaskView(view)
+```
+
+#### Rectangle based masking
+
+Sections of the screen can be masked by rectangles relative to the app's container view frame.  An important note: it is your responsibility to manage the masked rect  lifecycle to add and remove masked rects.
+
+A best practice is to add masked views in `viewWillAppear` of a `UIViewController`.
+
+```swift
+// Mask view by rect
+LastCrash.addMaskRect(CGRect(0,0,100,100), maskId: "masked_rect")
+```
+
+Masked views should be removed in the `viewDidDisappear` of a `UIViewController`.
+
+```swift
+// Remove mask rect
+LastCrash.removeMaskRect("masked_rect")
+```
+
 ### Networking support
 
 A call to `LastCrash.addNetworkTrackingToDefaultSession()` must be made to track networking errors and get summarized networking statistics including bytes sent/recieveed and response time.
